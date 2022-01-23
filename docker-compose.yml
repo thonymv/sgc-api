@@ -10,6 +10,8 @@ services:
       - MARIADB_DATABASE=bitnami_myapp
     ports:
       - '3306:3306'
+    volumes:
+      - mariadb-data:/bitnami/mariadb
   myapp:
     image: docker.io/bitnami/laravel:8
     ports:
@@ -23,3 +25,6 @@ services:
       - './api:/app'
     depends_on:
       - mariadb
+volumes:
+  mariadb-data:
+    driver: local
