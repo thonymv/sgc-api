@@ -15,12 +15,16 @@ class MallaCurricularController extends Controller
      */
     public function index()
     {
-        $mallas = MallaCurricular::all();
-        foreach ($mallas as $malla) {
-            $malla["nucleo_data"] = $malla->nucleo()->get();
-            $malla["pnf_data"] = $malla->pnf()->get();
+        try {
+            $mallas = MallaCurricular::all();
+            foreach ($mallas as $malla) {
+                $malla["nucleo_data"] = $malla->nucleo()->get()[0];
+                $malla["pnf_data"] = $malla->pnf()->get()[0];
+            }
+            return response()->json(['mallas' => $mallas], 200);
+        } catch (QueryException $exception) {
+            return response()->json(['exception' => $exception], 200);
         }
-        return response()->json(['mallas' => $mallas], 200);
     }
 
     /**

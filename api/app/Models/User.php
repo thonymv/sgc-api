@@ -46,11 +46,11 @@ class User extends Authenticatable
 
     public function pnf()
     {
-        return $this->belongsTo(Pnf::class, 'id', 'pnf');
+        return $this->belongsTo(Pnf::class, 'pnf', 'id');
     }
 
     public function nucleo()
     {
-        return $this->belongsTo(Nucleo::class, 'id', 'nucleo');
+        return $this->belongsTo(Nucleo::class, 'nucleo', 'id');
     }
 }
