@@ -16,6 +16,9 @@ class ContenidoSinopticoController extends Controller
     public function index()
     {
         $contenidos = contenidoSinoptico::all();
+        foreach ($contenidos as $contenido) {
+            $contenido["malla_data"] = $contenido->malla()->get()[0];
+        }
         return response()->json(['contenidos' => $contenidos], 200);
     }
 

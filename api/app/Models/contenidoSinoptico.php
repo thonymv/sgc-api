@@ -28,4 +28,8 @@ class contenidoSinoptico extends Model
         'evaluacion',
         'referencias',
     ];
+    public function malla()
+    {
+        return $this->belongsTo(MallaCurricular::class, 'malla', 'id');
+    }
 }
