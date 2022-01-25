@@ -16,6 +16,10 @@ class MallaCurricularController extends Controller
     public function index()
     {
         $mallas = MallaCurricular::all();
+        foreach ($mallas as $malla) {
+            $malla["nucleo_data"] = $malla->nucleo()->get();
+            $malla["pnf_data"] = $malla->pnf()->get();
+        }
         return response()->json(['mallas' => $mallas], 200);
     }
 
