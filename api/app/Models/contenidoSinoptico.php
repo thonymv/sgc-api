@@ -9,6 +9,8 @@ class contenidoSinoptico extends Model
 {
     use HasFactory;
 
+    protected $table = 'contenido_sinopticos';
+
     protected $fillable = [
         'malla',
         'unidad_curricular',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\contenidoSinoptico;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class ContenidoSinopticoController extends Controller
@@ -23,13 +24,17 @@ class ContenidoSinopticoController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-    */
+     */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $contenido = contenidoSinoptico::create($data);
-        $contenido->save();
-        return response()->json(['contenido' => $contenido], 200);
+        try {
+            $data = $request->json()->all();
+            $contenido = contenidoSinoptico::create($data);
+            $contenido->save();
+            return response()->json(['contenido' => $contenido], 200);
+        } catch (QueryException $exception) {
+            return response()->json(['exception' => $exception], 200);
+        }
     }
 
     /**
@@ -37,10 +42,9 @@ class ContenidoSinopticoController extends Controller
      *
      * @param  \App\Models\contenidoSinoptico  $contenidoSinoptico
      * @return \Illuminate\Http\Response
-    */
+     */
     public function show(contenidoSinoptico $contenido)
     {
-        
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MallaCurricular;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class MallaCurricularController extends Controller
@@ -26,10 +27,14 @@ class MallaCurricularController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $malla = MallaCurricular::create($data);
-        $malla->save();
-        return response()->json(['malla' => $malla], 200);
+        try {
+            $data = $request->json()->all();
+            $malla = MallaCurricular::create($data);
+            $malla->save();
+            return response()->json(['malla' => $malla], 200);
+        } catch (QueryException $exception) {
+            return response()->json(['exception' => $exception], 200);
+        }
     }
 
     /**
