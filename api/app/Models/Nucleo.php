@@ -14,4 +14,14 @@ class Nucleo extends Model
         'dir',
         'nombre'
     ];
+
+    public function mallas()
+    {
+        return $this->hasMany(MallaCurricular::class, 'nucleo', 'id');
+    }
+
+    public function usuarios()
+    {
+        return $this->hasMany(User::class, 'nucleo', 'id');
+    }
 }

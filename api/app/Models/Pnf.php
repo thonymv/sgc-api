@@ -13,4 +13,14 @@ class Pnf extends Model
         'codigo',
         'nombre'
     ];
+
+    public function mallas()
+    {
+        return $this->hasMany(MallaCurricular::class, 'pnf', 'id');
+    }
+
+    public function usuarios()
+    {
+        return $this->hasMany(User::class, 'pnf', 'id');
+    }
 }

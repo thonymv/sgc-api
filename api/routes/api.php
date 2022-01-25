@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContenidoSinopticoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MallaCurricularController;
 use App\Http\Controllers\NucleoController;
 use App\Http\Controllers\PnfController;
 use App\Http\Controllers\UserController;
@@ -40,6 +42,16 @@ Route::middleware('auth:sanctum')->post('/nucleo', [NucleoController::class, 'st
 Route::middleware('auth:sanctum')->put('/nucleo/{id}', [NucleoController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('/nucleo/{id}', [NucleoController::class, 'destroy']);
 
+
+Route::middleware('auth:sanctum')->get('/malla', [MallaCurricularController::class, 'index']);
+Route::middleware('auth:sanctum')->post('/malla', [MallaCurricularController::class, 'store']);
+Route::middleware('auth:sanctum')->put('/malla/{id}', [MallaCurricularController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('/malla/{id}', [MallaCurricularController::class, 'destroy']);
+
+Route::middleware('auth:sanctum')->get('/contenido', [ContenidoSinopticoController::class, 'index']);
+Route::middleware('auth:sanctum')->post('/contenido', [ContenidoSinopticoController::class, 'store']);
+Route::middleware('auth:sanctum')->put('/contenido/{id}', [ContenidoSinopticoController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('/contenido/{id}', [ContenidoSinopticoController::class, 'destroy']);
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 

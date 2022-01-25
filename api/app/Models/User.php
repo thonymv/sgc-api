@@ -42,4 +42,14 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function pnf()
+    {
+        return $this->belongsTo(Pnf::class, 'id', 'pnf');
+    }
+
+    public function nucleo()
+    {
+        return $this->belongsTo(Nucleo::class, 'id', 'nucleo');
+    }
 }
