@@ -14,6 +14,7 @@ services:
       - mariadb-data:/bitnami/mariadb
   myapp:
     image: docker.io/bitnami/laravel:8
+    # command: composer install
     ports:
       - '8000:8000'
     environment:
