@@ -41,9 +41,8 @@ class ContenidoSinopticoController extends Controller
                     break;
             }
             $contenido['url'] = url('/');
-            // return view('pdf', $contenido);
             $pdf = PDF::loadView('pdf', $contenido);
-            return $pdf->download('itsolutionstuff.pdf');
+            return $pdf->download("contenido-sinóptico-" . $contenido["unidad_curricular"] . "-trayecto-" . $contenido["trayecto"] . ".pdf");
         } catch (QueryException $exception) {
             return response()->json(['exception' => $exception], 200);
         }
