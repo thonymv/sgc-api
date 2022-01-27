@@ -12,6 +12,7 @@ class contenidoSinoptico extends Model
     protected $table = 'contenido_sinopticos';
 
     protected $fillable = [
+        'codigo',
         'malla',
         'unidad_curricular',
         'trayecto',

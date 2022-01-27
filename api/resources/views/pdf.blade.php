@@ -22,9 +22,11 @@
         border-collapse: collapse !important;
         padding: 1em !important;
     }
+
     table.tg {
         border: 0px solid black !important;
     }
+
     .tg td {
         font-family: Arial, sans-serif;
         font-size: 14px;
@@ -150,7 +152,7 @@
             <th class="tg-16it">{{ $thte }}</th>
         </tr>
         <tr>
-            <th class="tg-16it">Código:</th>
+            <th class="tg-16it">Código: {{ $codigo }}</th>
             <th class="tg-16it"></th>
             <th class="tg-16it"></th>
             <th class="tg-16it"></th>
