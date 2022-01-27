@@ -18,6 +18,7 @@ class contenidoSinoptico extends Model
         'creditos',
         'densidad',
         'hora_academica',
+        'duracion',
         'htea',
         'htei',
         'tipo',

@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum')->get('/contenido', [ContenidoSinopticoControll
 Route::middleware('auth:sanctum')->post('/contenido', [ContenidoSinopticoController::class, 'store']);
 Route::middleware('auth:sanctum')->put('/contenido/{id}', [ContenidoSinopticoController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('/contenido/{id}', [ContenidoSinopticoController::class, 'destroy']);
+Route::get('/contenido/{id}', [ContenidoSinopticoController::class, 'show']);
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 
