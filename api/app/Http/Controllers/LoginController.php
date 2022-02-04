@@ -21,9 +21,10 @@ class LoginController extends Controller
 
                 return response()->json(['success' => 'success'], 200);
             }
-
+            
             return response()->json(['error' => 'invalid'], 200);
         } catch (Throwable $e) {
+            error_log('Error: '.$e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }

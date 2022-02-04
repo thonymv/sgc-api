@@ -19,7 +19,14 @@ class MallaCurricularController extends Controller
             $mallas = MallaCurricular::all();
             foreach ($mallas as $malla) {
                 $malla["nucleo_data"] = $malla->nucleo()->get()[0];
-                $malla["pnf_data"] = $malla->pnf()->get()[0];
+                $pnf_list = $malla->pnf()->get();
+                $malla["pnf_data"] = count($pnf_list) > 0
+                    ? $pnf_list[0]
+                    : array(
+                        'id' => $malla['pnf'],
+                        'nombre' => 'PNF eliminado',
+                        'codigo' => 'PNF eliminado',
+                    );
             }
             return response()->json(['mallas' => $mallas], 200);
         } catch (QueryException $exception) {
